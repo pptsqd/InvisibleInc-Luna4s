@@ -1,5 +1,5 @@
 name = Luna4s
-author = Mobbstar, Luna4s
-version = 0.1
+author = Mobbstar, Puppetsquid, Luna4s
+version = 1.0
 icon = gui/icons/modicon_luna4s.png
 workshop = 

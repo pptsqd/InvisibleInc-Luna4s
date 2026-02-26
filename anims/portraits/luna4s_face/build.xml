@@ -1,5 +1,89 @@
-<Build name="luna4s_face.fla">
-  <Symbol name="head">
-    <Frame framenum="0" duration="1" image="head-0" w="1" h="1" x="0.0" y="0.0" />
-  </Symbol>
+<Build name="luna4s">
+<Symbol name="hair_R">
+  <Frame framenum="0" duration="1" image="hair_R" w="260" h="338" x="0" y="0"/>
+</Symbol>
+<Symbol name="hair_L">
+  <Frame framenum="0" duration="1" image="hair_L" w="147" h="204" x="0" y="0"/>
+</Symbol>
+<Symbol name="bang_L">
+  <Frame framenum="0" duration="1" image="bang_L" w="79" h="266" x="0" y="0"/>
+</Symbol>
+<Symbol name="bang_R">
+  <Frame framenum="0" duration="1" image="bang_R" w="84" h="266" x="0" y="0"/>
+</Symbol>
+<Symbol name="feather_L">
+  <Frame framenum="0" duration="1" image="feather_L" w="191" h="282" x="-54" y="-140"/>
+</Symbol>
+<Symbol name="feather_L_s">
+  <Frame framenum="0" duration="1" image="feather_L_s" w="178" h="-65" x="-90" y="-32"/>
+</Symbol>
+<Symbol name="feather_R">
+  <Frame framenum="0" duration="1" image="feather_R" w="197" h="282" x="54" y="-140"/>
+</Symbol>
+<Symbol name="feather_R_s">
+  <Frame framenum="0" duration="1" image="feather_R_s" w="184" h="-65" x="90" y="-32"/>
+</Symbol>
+<Symbol name="nose">
+  <Frame framenum="0" duration="1" image="nose" w="48" h="80" x="0" y="0"/>
+</Symbol>
+<Symbol name="lips">
+  <Frame framenum="0" duration="1" image="lips" w="90" h="30" x="0" y="0"/>
+</Symbol>
+<Symbol name="brow_L">
+  <Frame framenum="0" duration="1" image="brow_L" w="81" h="23" x="0" y="0"/>
+</Symbol>
+<Symbol name="brow_R">
+  <Frame framenum="0" duration="1" image="brow_R" w="81" h="23" x="0" y="0"/>
+</Symbol>
+<Symbol name="lid_L">
+  <Frame framenum="0" duration="1" image="lid_L_00" w="108" h="83" x="0" y="0"/>
+  <Frame framenum="1" duration="1" image="lid_L_01" w="108" h="83" x="0" y="0"/>
+  <Frame framenum="2" duration="1" image="lid_L_02" w="107" h="83" x="0" y="0"/>
+  <Frame framenum="3" duration="1" image="lid_L_03" w="106" h="83" x="0" y="0"/>
+</Symbol>
+<Symbol name="lid_R">
+  <Frame framenum="0" duration="1" image="lid_L_00" w="108" h="83" x="0" y="0"/>
+  <Frame framenum="1" duration="1" image="lid_L_01" w="108" h="83" x="0" y="0"/>
+  <Frame framenum="2" duration="1" image="lid_L_02" w="107" h="83" x="0" y="0"/>
+  <Frame framenum="3" duration="1" image="lid_L_03" w="106" h="83" x="0" y="0"/>
+</Symbol>
+<Symbol name="pupil_L">
+  <Frame framenum="0" duration="1" image="pupil_L" w="46" h="46" x="0" y="0"/>
+</Symbol>
+<Symbol name="pupil_R">
+  <Frame framenum="0" duration="1" image="pupil_R" w="46" h="46" x="0" y="0"/>
+</Symbol>
+<Symbol name="eye_L">
+  <Frame framenum="0" duration="1" image="eye_L" w="89" h="65" x="0" y="0"/>
+</Symbol>
+<Symbol name="eye_R">
+  <Frame framenum="0" duration="1" image="eye_R" w="89" h="65" x="0" y="0"/>
+</Symbol>
+<Symbol name="cheek_L">
+  <Frame framenum="0" duration="1" image="cheek_L" w="109" h="98" x="0" y="0"/>
+</Symbol>
+<Symbol name="cheek_R">
+  <Frame framenum="0" duration="1" image="cheek_R" w="109" h="98" x="0" y="0"/>
+</Symbol>
+<Symbol name="Face_L">
+  <Frame framenum="0" duration="1" image="face" w="272" h="402" x="0" y="0"/>
+</Symbol>
+<Symbol name="Ears">
+  <Frame framenum="0" duration="1" image="Ears" w="348" h="92" x="0" y="0"/>
+</Symbol>
+<Symbol name="scarf">
+  <Frame framenum="0" duration="1" image="scarf" w="516" h="305" x="0" y="0"/>
+</Symbol>
+<Symbol name="neck">
+  <Frame framenum="0" duration="1" image="neck" w="321" h="376" x="0" y="-150"/>
+</Symbol>
+<Symbol name="hair_m">
+  <Frame framenum="0" duration="1" image="hair_m" w="436" h="451" x="0" y="0"/>
+</Symbol>
+<Symbol name="torso">
+  <Frame framenum="0" duration="1" image="torso" w="634" h="408" x="0" y="0"/>
+</Symbol>
+<Symbol name="hair_b">
+  <Frame framenum="0" duration="1" image="hair_b" w="415" h="587" x="0" y="0"/>
+</Symbol>
 </Build>
