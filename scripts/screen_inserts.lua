@@ -4,7 +4,7 @@ return {
 		{"widgets", 5, "children"},
 		{
 			name = [[greenscreen]],
-			isVisible = true,
+			isVisible = false,
 			noInput = false,
 			anchor = 1,
 			rotation = 0,
