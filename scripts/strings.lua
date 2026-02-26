@@ -22,8 +22,8 @@ REASON = {
 ABILITIES = {
     UNCLOAK = "Pause Cloak",
     CLOAK_DESC = "Any currently active cloaks will end. Does not trigger augments.",
-	CLOAK_CHARGE_GAIN = "+%s Charge",
-	CLOAK_CHARGE_GAIN_RARE_1 = "+%s Shiny",
+	CLOAK_CHARGE_GAIN = "+{1} Charge",
+	CLOAK_CHARGE_GAIN_RARE_1 = "+{1} Shiny",
 	CLOAK_CHARGE_GAIN_RARE_2 = "Shiny Get",
     CHROMAKEY = "Chroma Key",
 },
