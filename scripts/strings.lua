@@ -10,9 +10,9 @@ Adds Luna4s (Archive) to rescueable agents.]],
 },
 
 ITEMS = {
-    AUG_CLOAK = "Refraction Cloak",
+    AUG_CLOAK = "Shimmer Rig",
     AUG_CLOAK_TIP = "Renders the user invisible until out of charge. Gains charge when looting a guard or safe. Loses charge in use when moving or ending turn.",
-    AUG_CLOAK_FLAVOR = "This rig quickly burns through the same dispensable components as found in credit cards.",
+    AUG_CLOAK_FLAVOR = "Rather than the traditional method of bending light around the user, this short-burst cloak actually redirects light directly into the viewers' eyes.",
 },
 
 REASON = {
@@ -22,6 +22,9 @@ REASON = {
 ABILITIES = {
     UNCLOAK = "Pause Cloak",
     CLOAK_DESC = "Any currently active cloaks will end. Does not trigger augments.",
+	CLOAK_CHARGE_GAIN = "+%s Charge",
+	CLOAK_CHARGE_GAIN_RARE_1 = "+%s Shiny",
+	CLOAK_CHARGE_GAIN_RARE_2 = "Shiny Get",
     CHROMAKEY = "Chroma Key",
 },
 

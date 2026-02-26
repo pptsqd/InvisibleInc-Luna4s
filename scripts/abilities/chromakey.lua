@@ -15,7 +15,7 @@ local _M = {
     HUDpriority = 6,
     alwaysShow = true,
     canUseWhileDragging = true,
-    iconColor = util.color(0.25, 0.75, 0.25),
+    iconColor = util.color(0.45, 0.75, 0.45),
     iconColorHover = util.color.WHITE,
     selectedIndex = nil,
     selectedColor = nil
@@ -29,7 +29,7 @@ function _M:createToolTip(sim, abilityOwner, ...)
     if self.selectedIndex then
         local bytes = colorList[self.selectedIndex]
         local hex = string.format("%02X%02X%02X", bytes[1], bytes[2], bytes[3])
-        return abilityutil.formatToolTip(STRINGS.LUNA4S.ABILITIES.CHROMAKEY, string.format("<c:%s>#%s</>", hex, hex), 0)
+        return abilityutil.formatToolTip(STRINGS.LUNA4S.ABILITIES.CHROMAKEY, string.format("Color: #%s\nClick to Cycle", hex), 0)
     else
         return abilityutil.formatToolTip(STRINGS.LUNA4S.ABILITIES.CHROMAKEY, STRINGS.UI.HUD_OFF, 0)
     end

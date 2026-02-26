@@ -19,7 +19,21 @@ local function getItemUnit(userUnit) -- assumption: only one per agent
 	end
 end
 
-function _M:addCharge(delta)
+function _M:addCharge(sim, delta, float)
+
+	if delta and self.userUnit and delta > 0 then   -- adding an indicator
+		local x0,y0 = self.userUnit:getLocation()
+		local txt = string.format(STRINGS.LUNA4S.ABILITIES.CLOAK_CHARGE_GAIN, delta)
+		local rand = sim:nextRand(1,20)
+		if rand == 20 then
+			txt = string.format(STRINGS.LUNA4S.ABILITIES.CLOAK_CHARGE_GAIN_RARE_1, delta)
+		elseif rand == 1 then
+			txt = TRINGS.LUNA4S.ABILITIES.CLOAK_CHARGE_GAIN_RARE_2
+		end
+		sim:dispatchEvent( simdefs.EV_UNIT_FLOAT_TXT,
+			{ txt= txt, x=x0,y=y0 } )
+	end
+	
     delta = delta or 1
     self.itemUnit:getTraits().ammo = self.itemUnit:getTraits().ammo + delta
     if self.itemUnit:getTraits().ammo < 0 then
@@ -67,13 +81,14 @@ function _M:executeAbility(sim, abilityOwner, ...)
     if self.userUnit:hasTrait("luna4s_active") then
         self.userUnit:getTraits().cloakDistance = nil
         self.userUnit:setInvisible(false)
+		    sim:processReactions( self.userUnit )  -- uncloaking in guard vision is a bad idea!
         self:refreshName()
         return
     end
 
     self.userUnit:getTraits().luna4s_activating = true
     local result = {useInvisiCloak.executeAbility(self, sim, self.itemUnit, ...)}
-    self:addCharge() -- hack against inventory.useItem in base ability
+    self:addCharge(sim) -- hack against inventory.useItem in base ability
     self.userUnit:getTraits().luna4s_activating = nil
     self.userUnit:getTraits().luna4s_active = true
     self:refreshCloakDuration()
@@ -100,7 +115,7 @@ function _M:onTrigger(sim, evType, evData)
     -- add charge on loot itemless safe: monkeypatched in stealCredits.executeAbility
 
     if evType == simdefs.TRG_START_TURN and evData == self.userUnit:getPlayerOwner() and self.userUnit:hasTrait("luna4s_active") then
-        self:addCharge(-1)
+        self:addCharge(sim,-1)
         self:refreshCloakDuration()
         self:refreshName()
 
@@ -108,7 +123,7 @@ function _M:onTrigger(sim, evType, evData)
         local targetUnit = sim:getUnit(evData[2])
         if targetUnit and not targetUnit:hasAbility("carryable") then -- looted cash, pwr, or a program, all of which are irreversible and thus unexploitable
             targetUnit:getTraits().luna4s_looted = true
-            self:addCharge()
+            self:addCharge(sim,1)
             self:refreshCloakDuration()
         end
     end

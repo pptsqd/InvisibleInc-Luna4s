@@ -179,6 +179,7 @@ GUARDS.LINES[_M.GENERIC] = {
 }
 GUARDS.LINES[_M.GENERIC_HUNTING] = { 
 	"Don't fall for the cute one!",
+	"Careful, I heard there's a pirate here!",
 }
 GUARDS.LINES[_M.CFO] = { 
 	"Yes, hello, I need priority support for Live3D…",
@@ -201,6 +202,11 @@ GUARDS.BANTERS = {
 		"<sigh> Why do people stream on weekdays?",
 		"Because then creeps like you don't bother her.",
 		"For the twentieth time, we're calling her \"cute\" as a running gag!"
+	},
+	{
+		"I have SO much homework to do.",
+		"Who's giving you homework?",
+		"Oh, it's this puzzle game i've been playing..."
 	},
 }
 GUARDS.BANTERS_HUNTING = {
