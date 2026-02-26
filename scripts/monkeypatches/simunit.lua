@@ -1,8 +1,11 @@
 local SimUnit = include("sim/simunit")
 local setInvisible = SimUnit.setInvisible
-SimUnit.setInvisible = function(self, ...)
-    self:getTraits().luna4s_active = nil
-    return setInvisible(self, ...)
+SimUnit.setInvisible = function(self, state, duration, ...)
+    local ability = self:ownsAbility("luna4s_cloak")
+    if ability then
+        ability:onSetInvisible(state, duration)
+    end
+    return setInvisible(self, state, duration, ...)
 end
 local countAugments = SimUnit.countAugments
 SimUnit.countAugments = function(self, ...)

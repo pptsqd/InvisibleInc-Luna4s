@@ -10,9 +10,9 @@ Adds Luna4s (Archive) to rescueable agents.]],
 },
 
 ITEMS = {
-    AUG_CLOAK = "Refraction cloak",
-    AUG_CLOAK_TIP = "Renders the user invisible until out of charge. Gains charge when looting a guard or safe. While in use, loses charge when moving or ending turn.",
-    AUG_CLOAK_FLAVOR = "Hoot.",
+    AUG_CLOAK = "Refraction Cloak",
+    AUG_CLOAK_TIP = "Renders the user invisible until out of charge. Gains charge when looting a guard or safe. Loses charge in use when moving or ending turn.",
+    AUG_CLOAK_FLAVOR = "This rig quickly burns through the same dispensable components as found in credit cards.",
 },
 
 REASON = {
@@ -20,7 +20,7 @@ REASON = {
 },
 
 ABILITIES = {
-    UNCLOAK = "Uncloak",
+    UNCLOAK = "Pause Cloak",
     CLOAK_DESC = "Any currently active cloaks will end. Does not trigger augments.",
     CHROMAKEY = "Chroma Key",
 },
@@ -41,7 +41,7 @@ AGENT = {
 
     ALT_1 = {
         AGE = "32",
-        BIO = "",
+        BIO = "Please write your very own self-insert fanfic here, Luna.",
         TOOLTIP = "Cute Owl",
     },
     ALT_2 = {

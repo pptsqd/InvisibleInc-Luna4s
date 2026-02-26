@@ -38,14 +38,16 @@ function _M:refreshCloakDuration(value)
     end
 end
 
-function _M:getName(sim, abilityOwner, userUnit)
+function _M:refreshName() -- workaround because getName is unused
     if self.userUnit and self.userUnit:hasTrait("luna4s_active") then
-        return STRINGS.LUNA4S.ABILITIES.UNCLOAK
+        self.name = STRINGS.LUNA4S.ABILITIES.UNCLOAK
+    else
+        self.name = STRINGS.ABILITIES.CLOAK_USE
     end
-    if self.itemUnit and self.itemUnit:getTraits().ammo > 0 then
-        return string.format(STRINGS.ABILITIES.CLOAK_DURATION, self.itemUnit:getTraits().ammo)
-    end
-    return STRINGS.ABILITIES.CLOAK_USE
+end
+
+function _M:getName(sim, abilityOwner, userUnit) -- abilityutil.hotkey_tooltip does not use this, sadly
+    return self.name
 end
 
 function _M:onTooltip(hud, sim, abilityOwner, ...)
@@ -65,6 +67,7 @@ function _M:executeAbility(sim, abilityOwner, ...)
     if self.userUnit:hasTrait("luna4s_active") then
         self.userUnit:getTraits().cloakDistance = nil
         self.userUnit:setInvisible(false)
+        self:refreshName()
         return
     end
 
@@ -74,6 +77,7 @@ function _M:executeAbility(sim, abilityOwner, ...)
     self.userUnit:getTraits().luna4s_activating = nil
     self.userUnit:getTraits().luna4s_active = true
     self:refreshCloakDuration()
+    self:refreshName()
 
     return unpack(result)
 end
@@ -93,13 +97,12 @@ function _M:onDespawnAbility(sim, abilityOwner)
 end
 
 function _M:onTrigger(sim, evType, evData)
-    -- disable when another cloak gets used: monkeypatched in simunit.setInvisible
-    -- remove charge on move: monkeypatched in engine.moveUnit
     -- add charge on loot itemless safe: monkeypatched in stealCredits.executeAbility
 
     if evType == simdefs.TRG_START_TURN and evData == self.userUnit:getPlayerOwner() and self.userUnit:hasTrait("luna4s_active") then
         self:addCharge(-1)
         self:refreshCloakDuration()
+        self:refreshName()
 
     elseif evType == simdefs.TRG_ACTION and evData.ClassType == "lootItem" and not evData.pre and evData[1] == self.userUnit:getID() and evData[2] then
         local targetUnit = sim:getUnit(evData[2])
@@ -107,6 +110,27 @@ function _M:onTrigger(sim, evType, evData)
             targetUnit:getTraits().luna4s_looted = true
             self:addCharge()
             self:refreshCloakDuration()
+        end
+    end
+end
+
+function _M:onSetInvisible(state, duration) -- monkeypatched in simunit.setInvisible
+    if self.userUnit:hasTrait("luna4s_active") then
+        self.userUnit:getTraits().luna4s_active = nil -- disable when another cloak gets used
+        if not self.userUnit:getTraits().invisDuration then -- cloak just expired
+            self:addCharge(-1)
+        end
+    end
+    self:refreshName()
+end
+
+function _M:onMoveUnit(wasActive) -- monkeypatched in engine.moveUnit
+    if self.userUnit and self.userUnit:isValid() and self.itemUnit and self.itemUnit:isValid() and wasActive then
+        if self.userUnit:getTraits().cloakDistance then -- deduct charge on move
+            self.itemUnit:getTraits().ammo = math.max(0.5, math.floor(self.userUnit:getTraits().cloakDistance * 2) / 2) -- round diagonal steps to 1.5
+            self:refreshCloakDuration(self.userUnit:getTraits().cloakDistance)
+        else -- cloak just expired
+            self.itemUnit:getTraits().ammo = 0
         end
     end
 end
